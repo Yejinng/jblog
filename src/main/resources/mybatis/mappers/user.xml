@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<insert id="insert" parameterType="uservo">
+	<![CDATA[
+	insert 
+	into users 
+	values( user_seq.nextval, #{id }, #{name }, #{password }, sysdate)
+	]]>
+
+	</insert>
+	
+	<select id="getByIdAndPassword" parameterType="map"
+		resultType="uservo">
+	<![CDATA[
+	select user_no as userNo, user_name as name 
+	from users 
+	where user_id=#{id } and password=#{password }
+	]]>
+
+	</select>
+
+	<select id="getById" parameterType="String" resultType="uservo">
+	<![CDATA[
+	select user_no as userNo, user_id as id, user_name as name 
+	from users 
+	where user_id=#{id }
+	]]>
+	</select>
+	
+	<select id="getByNo" parameterType="long" resultType="uservo">
+	<![CDATA[
+	select user_name as name, user_id as id 
+	from users 
+	where user_no=#{userNo }
+	]]>
+	</select>
+	
+	<update id="update" parameterType="uservo" >
+	<![CDATA[
+	update users
+		set 
+		]]>
+		<if test="password != null and password != '' ">
+			<![CDATA[	
+			password =#{password },
+			 ]]>
+		</if>
+		<![CDATA[
+			user_name as name =#{name }, 
+		where user_no =#{no }
+		]]>
+	</update>
+</mapper>

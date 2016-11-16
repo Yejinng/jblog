@@ -1,7 +1,5 @@
 package com.bit2016.jblog.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +24,13 @@ public class UserController {
 	@RequestMapping("/join")
 	public String join( @ModelAttribute UserVo vo) {
 		userService.join(vo);
-		return "/user/joinsuccess";
+		return "redirect:/user/joinsuccess";
+	}
+	
+	@RequestMapping("/joinsuccess")
+	public String joinSuccess() {
+		
+		return "user/joinsuccess";
 	}
 	
 	@RequestMapping("/loginform")

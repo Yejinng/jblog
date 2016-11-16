@@ -34,8 +34,8 @@ public class UserDao {
 		return sqlSession.selectOne("user.getByNo",no);
 	}
 	
-	public void insert(UserVo vo) {
-		sqlSession.insert("user.insert", vo);
+	public boolean insert(UserVo vo) {
+		return (sqlSession.insert("user.insert", vo) == 1 );
 	}
 	
 	public void update(UserVo vo)  {

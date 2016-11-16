@@ -45,7 +45,7 @@
 	<context:annotation-config />
 
 	<!-- the mvc resources tag does the magic -->
-	<mvc:resources mapping="/gallery/assets/**" location="file:/upload/" />
+	<mvc:resources mapping="/assets/logo/**" location="file:/upload/" />
 
 	<!-- 패키지 com.bit2016.hellospring.controller 밑에있는 클래스 중에 @controller를 달고 
 		있는 클래스의 객체를 생성하겠다 -->

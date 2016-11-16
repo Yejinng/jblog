@@ -16,7 +16,7 @@
 		<form class="login-form" id="login-form" name="loginform" method="post"
 					action="${pageContext.request.contextPath }/user/login">
       		<label>아이디</label> <input type="text" name="id" value="">
-      		<label>패스워드</label> <input type="text" name="password"  value="">
+      		<label>패스워드</label> <input type="password" name="password"  value="">
       		 <c:if test="${param.result =='fail' }">
 					      <P>로그인이 실패했습니다</P>
 					    </c:if>

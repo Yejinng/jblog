@@ -4,10 +4,13 @@
 <mapper namespace="user">
 
 	<insert id="insert" parameterType="uservo">
+	<selectKey keyProperty="userNo" resultType="long" order="BEFORE">
+			select user_seq.nextval from dual
+		</selectKey>
 	<![CDATA[
 	insert 
 	into users 
-	values( user_seq.nextval, #{id }, #{name }, #{password }, sysdate)
+	values( #{userNo }, #{id }, #{name }, #{password }, sysdate)
 	]]>
 
 	</insert>
@@ -15,7 +18,7 @@
 	<select id="getByIdAndPassword" parameterType="map"
 		resultType="uservo">
 	<![CDATA[
-	select user_no as userNo, user_name as name 
+	select user_no as userNo, user_name as name, user_id as id
 	from users 
 	where user_id=#{id } and password=#{password }
 	]]>

@@ -3,5 +3,10 @@
 
 <mapper namespace="category">
 
-	
+	<insert id="insert" parameterType="categoryvo">
+	<![CDATA[
+		insert into category
+		values( category_seq.nextval, #{userNo }, #{categoryName }, #{categoryDescription }, sysdate)
+	]]>
+	</insert>
 </mapper>

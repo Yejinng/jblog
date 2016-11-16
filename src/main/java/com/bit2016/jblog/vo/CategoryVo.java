@@ -7,6 +7,7 @@ public class CategoryVo {
 	private String categoryName;
 	private String categoryDescription;
 	private String categoryDate;
+	
 	public Long getCategoryNo() {
 		return categoryNo;
 	}

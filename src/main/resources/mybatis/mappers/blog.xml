@@ -3,5 +3,27 @@
 
 <mapper namespace="blog">
 
+	<insert id="insert" parameterType="blogvo">
+	<![CDATA[
+		insert
+			into blog
+			values( #{userNo }, #{blogTitle }, #{blogLogo })
+	]]>
+	</insert>
 	
+	<select id="getInfo" parameterType="Long" resultType="blogvo">
+	<![CDATA[
+		select user_no as userNo, blog_title as blogTitle, blog_logo as blogLogo
+			from blog
+			where user_no = #{userNo }
+	]]>
+	</select>
+	
+	<update id="update" parameterType="blogvo">
+	<![CDATA[
+		update blog
+		set blog_title=#{blogTitle }, blog_logo=#{blogLogo }
+		where user_no=#{userNo }
+	]]>
+	</update>
 </mapper>

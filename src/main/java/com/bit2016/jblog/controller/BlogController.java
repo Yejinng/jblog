@@ -33,17 +33,17 @@ public class BlogController {
 	private PostService postService;
 	
 	@RequestMapping("/{userId}")
-	public String index(@AuthUser UserVo authUser, @PathVariable("userId") String userId, Model model) {
-		//BlogVo vo = blogService.getInfo(authUser.getUserNo());
+	public String index(@PathVariable("userId") String userId, Model model) {
+		BlogVo vo = blogService.getInfo(userId);
 		model.addAttribute("userId", userId);
-		//model.addAttribute("blogVo",vo);
+		model.addAttribute("blogVo",vo);
 		return "blog/blog-main";
 	}
 	
 	@Auth
 	@RequestMapping("/{userId}/admin/basic/modify")
 	public String adminBasicForm(@AuthUser UserVo authUser, @PathVariable("userId") String userId, Model model) {
-		BlogVo vo = blogService.getInfo(authUser.getUserNo());
+		BlogVo vo = blogService.getInfo(userId);
 		model.addAttribute("userId", userId);
 		model.addAttribute("blogVo",vo);
 		return "blog/blog-admin-basic";
@@ -62,7 +62,7 @@ public class BlogController {
 	@RequestMapping("/{userId}/admin/category")
 	public String adminCategory(@AuthUser UserVo authUser, @PathVariable("userId") String userId, Model model) {
 		System.out.println("컨트롤러 카테고리");
-		BlogVo vo = blogService.getInfo(authUser.getUserNo());
+		BlogVo vo = blogService.getInfo(userId);
 		System.out.println("authUserNo: " +authUser.getUserNo());
 		List<CategoryVo> list = categoryService.categoryList(authUser.getUserNo());
 		System.out.println(list);
@@ -87,7 +87,8 @@ public class BlogController {
 			@ModelAttribute PostVo postVo, Model model) {
 		System.out.println(postVo);
 		postService.write(postVo);
-		return "redirect:/"+authUser.getId()+"/"+postVo.getPostNo();
+		return "blog/blog-main";
+		//return "redirect:/"+authUser.getId()+"/"+postVo.getPostNo();
 	}
 	
 	

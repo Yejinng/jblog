@@ -79,8 +79,8 @@ public class BlogService {
 		return fileName;
 	}
 
-	public BlogVo getInfo(Long userNo) {
+	public BlogVo getInfo(String userId) {
 		
-		return blogDao.getInfo(userNo);
+		return blogDao.getInfo(userId);
 	}
 }

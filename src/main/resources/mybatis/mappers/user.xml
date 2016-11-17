@@ -5,7 +5,7 @@
 
 	<insert id="insert" parameterType="uservo">
 	<selectKey keyProperty="userNo" resultType="long" order="BEFORE">
-			select user_seq.nextval from dual
+			select users_seq.nextval from dual
 		</selectKey>
 	<![CDATA[
 	insert 

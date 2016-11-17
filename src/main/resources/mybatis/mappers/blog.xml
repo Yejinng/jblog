@@ -11,11 +11,12 @@
 	]]>
 	</insert>
 	
-	<select id="getInfo" parameterType="Long" resultType="blogvo">
+	<select id="getInfo" parameterType="String" resultType="blogvo">
 	<![CDATA[
-		select user_no as userNo, blog_title as blogTitle, blog_logo as blogLogo
-			from blog
-			where user_no = #{userNo }
+		select a.user_no as userNo, a.blog_title as blogTitle, a.blog_logo as blogLogo
+			from blog a, users b
+			where a.user_no = b.user_no
+			and b.user_id = #{userId }
 	]]>
 	</select>
 	

@@ -16,8 +16,8 @@ public class BlogDao {
 		return (sqlSession.insert("blog.insert", blogVo) == 1 );
 	}
 
-	public BlogVo getInfo(Long userNo) {
-		return sqlSession.selectOne("blog.getInfo", userNo);
+	public BlogVo getInfo(String userId) {
+		return sqlSession.selectOne("blog.getInfo", userId);
 	}
 
 	public void update(BlogVo blogVo) {

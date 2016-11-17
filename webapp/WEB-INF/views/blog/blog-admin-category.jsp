@@ -144,7 +144,7 @@ $(function(){
 		      			<td>${vo.categoryName }</td>
 		      			<td>${vo.postNumber }</td>
 		      			<td>${vo.categoryDescription }</td>
-		      			<td>삭제</td>      			
+		      			<td id='btn_delete'><a href=''><img src='${pageContext.request.contextPath}/assets/images/delete.jpg'></a></td>    			
 		      		</tr>
 		      		</c:forEach>
 		      		</tbody>	      		

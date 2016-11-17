@@ -7,6 +7,11 @@ public class PostVo {
 	private String postTitle;
 	private String postContent;
 	private String postDate;
+	private Long postNumber;
+	
+	public Long getPostNumber() {
+		return postNumber;
+	}
 	public Long getPostNo() {
 		return postNo;
 	}
@@ -21,6 +26,9 @@ public class PostVo {
 	}
 	public String getPostDate() {
 		return postDate;
+	}
+	public void setPostNumber(Long postNumber) {
+		this.postNumber = postNumber;
 	}
 	public void setPostNo(Long postNo) {
 		this.postNo = postNo;
@@ -40,7 +48,7 @@ public class PostVo {
 	@Override
 	public String toString() {
 		return "PostVo [postNo=" + postNo + ", categoryNo=" + categoryNo + ", postTitle=" + postTitle + ", postContent="
-				+ postContent + ", postDate=" + postDate + "]";
+				+ postContent + ", postDate=" + postDate + ", postNumber=" + postNumber + "]";
 	}
 	
 	

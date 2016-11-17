@@ -44,9 +44,9 @@ public class UserService {
 		CategoryVo categoryVo = new CategoryVo();
 		categoryVo.setUserNo(userNo);
 		categoryVo.setCategoryName("기본카테고리");
-		categoryVo.setCategoryDescription("뭐.....");
+		categoryVo.setCategoryDescription("기본카테고리");
 		
-		result = categoryDao.insert(categoryVo);
+		result = categoryDao.insert1(categoryVo);
 		
 	}
 	

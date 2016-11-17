@@ -4,9 +4,43 @@
 <mapper namespace="category">
 
 	<insert id="insert" parameterType="categoryvo">
+	<selectKey keyProperty="categoryNo" resultType="long" order="BEFORE">
+			select category_seq.nextval from dual
+		</selectKey>			
 	<![CDATA[
 		insert into category
-		values( category_seq.nextval, #{userNo }, #{categoryName }, #{categoryDescription }, sysdate)
+		values( #{categoryNo }, #{userNo }, #{categoryName }, #{categoryDescription }, sysdate)
 	]]>
 	</insert>
+	
+	<select id="categoryList" parameterType="long" resultType="categoryvo">
+	<![CDATA[
+	select a.category_no as categoryNo, 
+		   a.user_no as userNo, 
+		   a.category_name as categoryName, 
+		   a.category_des as categoryDescription, nvl((select count(*) as postNumber from post c, category d 
+													where c.category_no=a.category_no and c.category_no=d.category_no and d.user_no=#{userNo } 
+													group by c.category_no),0) as postNumber 
+	from category a 
+	where a.user_no = #{userNo }
+	order by a.category_no desc
+	
+	]]>
+	</select>
+	
+	<select id="getInfo" parameterType="Long" resultType="categoryvo">
+	<![CDATA[
+		select user_no as userNo, category_no as categoryNo, category_name as categoryName, category_des as categoryDescription
+			from category
+			where user_no = #{userNo }
+	]]>
+	</select>
+	
+		<delete id="delete" parameterType="categoryvo">
+	<![CDATA[
+	delete from category
+	where category_no = #{categoryNo }
+	]]>
+
+	</delete>
 </mapper>

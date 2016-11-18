@@ -13,4 +13,37 @@
 	]]>
 	</insert>
 	
+	<select id="postList" parameterType="map" resultType="postvo">
+	
+	<![CDATA[
+		select p.post_no as postNo,
+			   p.category_no as categoryNo,
+			   p.post_title as postTitle,
+			   p.post_content as postContent,
+			   to_char ( p.post_date, 'yyyy-mm-dd hh:mi:ss' ) as postDate
+		from category a, post p
+		where a.category_no = p.category_no
+		and a.user_no = #{userNo }
+	]]>
+	<if test="categoryNo != null">
+	<![CDATA[
+	 	and a.category_no = #{categoryNo }
+	 	]]>
+	</if>
+	<![CDATA[
+		order by p.post_no desc
+	]]>
+	</select>
+	
+	<select id="get" parameterType="long" resultType="postvo">
+	<![CDATA[
+		select post_no as postNo,
+			   category_no as categoryNo,
+			   post_title as postTitle,
+			   post_content as postContent,
+			   to_char ( post_date, 'yyyy-mm-dd hh:mi:ss' ) as postDate
+		from post
+		where post_no=#{postNo}
+	]]>
+	</select>
 </mapper>

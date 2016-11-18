@@ -83,4 +83,5 @@ public class BlogService {
 		
 		return blogDao.getInfo(userId);
 	}
+	
 }

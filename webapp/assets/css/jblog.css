@@ -5,10 +5,10 @@ body			{ font:0.75em "맑은 고딕", 돋움, 굴림; text-align:center; color:#
 ul, ol			{ list-style-type: none }
 fieldset		{ border:none }
 
-a:link 			{ color:#696969; text-decoration:none; font-weight:bold; }
-a:visited 		{ color:#696969F; text-decoration:none; font-weight:bold; }
-a:active 		{ color:#696969; text-decoration:none; font-weight:bold; }
-a:hover 		{ color:#dc143c; text-decoration:none; font-weight:bold; } 
+a:link 			{ color:#a53d59; text-decoration:none; font-weight:bold; }
+a:visited 		{ color:#a53d59; text-decoration:none; font-weight:bold; }
+a:active 		{ color:#a85050; text-decoration:none; font-weight:bold; }
+a:hover 		{ color:#a85050; text-decoration:none; font-weight:bold; } 
 
 
 
@@ -59,12 +59,12 @@ div#footer					{ clear:both; width:100% }
 div#header h1		{ text-align:center; line-height:100px; margin:0; color:#fff }
 div#header ul		{ height:20px } 
 div#header li		{ float:right; margin-right:10px; }
-div#header li a 	{ color:#e8eeef; font-weight:bold; text-decoration:none; }
+div#header li a 	{ color:#e8eeef; font-weight:bold; text-shadow: 3px -3px 3px #4a656b}
 
-#header h1 a:hover	 { color:#e8eeef; text-decoration:none  }
-#header h1 a:link	 { color:#e8eeef; text-decoration:none  }
-#header h1 a:visited { color:#e8eeef; text-decoration:none  }
-#header h1 a:active  { color:#e8eeef; text-decoration:none  }
+#header h1 a:hover	 { color:#e8eeef; text-shadow: 3px -3px 3px #4a656b}
+#header h1 a:link	 { color:#e8eeef; text-shadow: 3px -3px 3px #4a656b }
+#header h1 a:visited { color:#e8eeef; text-shadow: 3px -3px 3px #4a656b}
+#header h1 a:active  { color:#e8eeef; text-shadow: 3px -3px 3px #4a656b}
 
 div#container		{ text-align:left }
 
@@ -73,7 +73,7 @@ div#container		{ text-align:left }
 div#content	.blog-content	{ padding:10px}
 .blog-content h4			{ font-size:1.3em; color:#9D96D0 }
 .blog-content p				{ margin-top:10px; line-height:150% }
-div#content .blog-list		{ margin:20px 0 10px 10px}
+div#content .blog-list		{ margin:20px 0 10px 10px; padding-top: 10px; border-top: 1px #688991 dotted;}
 .blog-list 					{ width:100% }
 .blog-list li				{ height:20px; clear:both; }
 .blog-list li a				{ display:block; float:left }
@@ -107,18 +107,18 @@ div#content .admin-cat					{ border:none; width:720px; margin-top:30px }
 .admin-cat-write td.s					{ padding:10px 0; text-align:center }
 
 /* navigator */
-div#navigation							{ background-color:#F9F9F9 }
-div#navigation h2, div#navigation ul	{ margin-left:10px }
-div#navigation h2						{ font-size:1.0em }
-div#navigation ul						{ margin-top:5px; margin-bottom:10px }
-div#navigation ul li					{ padding:2px 0 }
+div#navigation							{ background-color:#F9F9F9; position:relative}
+div#navigation h2, div#navigation ul	{ margin-left:10px;  }
+div#navigation h2						{ font-size:1.0em; padding-left:4px; padding-top:4px}
+div#navigation ul						{ margin-top:7px; margin-bottom:10px}
+div#navigation ul li					{ padding:1px 0 ; padding-left:4px}
 div#navigation ul a						{ font-weight:normal }
 
 
 /* extra */
-div#extra					{ background-color:#F9F9F9 }
+div#extra					{ background-color:#F9F9F9; margin-top:10px; padding-top:10px; position:relative }
 div#extra .blog-logo		{ margin:0 0 0 10px }
-div#extra .blog-logo img	{ width:150px }
+div#extra .blog-logo img	{ width:180px }
 
 /* footer */
 div#footer		{ background:#688991; color:#cdd6d8 }

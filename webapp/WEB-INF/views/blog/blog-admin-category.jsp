@@ -15,11 +15,11 @@
 var render = function( vo, where) {
 		var num = parseInt($("tbody tr td").first().text())+1;
 		var htmls = 
-			"<tr><td id='category_no'>" + num + "</td>" +
+			"<tr id=\"category-" + vo.categoryNo + "\"><td>" + num + "</td>" +
 			"<td>" + vo.categoryName  + "</td>" +
 			"<td> 0 </td>" +
 			"<td>" + vo.categoryDescription + "</td>" +
-			"<td id='btn_delete'><a href=''><img src='${pageContext.request.contextPath}/assets/images/delete.jpg'></a></td>" +
+			"<td><a id=\"btn_delete\" href=\"\"><img src='${pageContext.request.contextPath}/assets/images/delete.jpg'></a></td>" +
 			"</tr>";
 			$("#list_category").prepend(htmls);
 }
@@ -28,19 +28,23 @@ $(function(){
 	/* $(".errorMsg").hide();
 	var $no = null; */
 	//삭제버튼
-	$("#btn_delete").click(function(event){
+	$("#list_category").on('click','#btn_delete',function(event){
+		
+		
 		event.preventDefault();
-		$no = $(this).parent().attr("id");
-		dialog.dialog("open");
-	});
-	
-	var deleteCategory = function(){
-		no = $no.replace("btn_delete","");
+		
+		r = confirm("카테고리를 삭제하시겠습니까? 삭제시 해당 포스트가 모두 삭제됩니다 :)");
+		if( r == false) {
+			return;
+		}
+		no = $(this).parent().parent().attr("id").replace("category-","");
+		console.log(no);
+		
 		$.ajax({
-			url: "${pageContext.request.contextPath }/blog/api/delete",
-			type: "post",
+			url: "${pageContext.request.contextPath }/blog/api/delete?categoryNo=" + no,
+			type: "get",
 			dataType: "json",
-			data: "no=" + no,
+			data: "",
 			success: function(response) {
 				if(response.result != "success"){
 					console.error(response.message);
@@ -49,37 +53,15 @@ $(function(){
 					return;
 				}
 				console.log(response.data);
-				$(response.data).remove();
-				dialog.dialog( "close" );
+				$("#category-"+response.data.categoryNo).remove();
 			},
 			error: function(jqXHR, status, e) {
 				console.log(status + ":" + e);
 			}
 		});
-	}
-		dialog = $( "#dialog-form" ).dialog({
-		    autoOpen: false,
-		    height: 400,
-		    width: 350,
-		    modal: true,
-		    buttons: {
-		  	  
-		      "삭제하기": deleteCategory,
-		      Cancel: function() {
-		        dialog.dialog( "close" );
-		      }
-		    },
-		    close: function() {
-			       	  form[ 0 ].reset();
-		        $(".errorMsg").hide();
-		    }
-		  });
+	});
 
-	  form = dialog.find( "form" ).on( "submit", function( event ) {
-		      event.preventDefault();
-	    deleteCategory();
-	  }); 
-  
+
 		$("#admin-cat-add").submit( function(event) {
 			event.preventDefault();
 			//ajax insert
@@ -126,6 +108,7 @@ $(function(){
 					<li class="selected"><a href="${pageContext.request.contextPath }/${authUser.id }/admin/category">카테고리</a></li>
 					<li><a href="${pageContext.request.contextPath }/${authUser.id }/admin/write">글작성</a></li>
 				</ul>
+				<form id="admin-cat-delete" method="post" action="${pageContext.request.contextPath }/blog/api/delete">
 		      		<table class="admin-cat">
 		      		<thead>
 		      		<tr>
@@ -144,11 +127,12 @@ $(function(){
 		      			<td>${vo.categoryName }</td>
 		      			<td>${vo.postNumber }</td>
 		      			<td>${vo.categoryDescription }</td>
-		      			<td id='btn_delete'><a href=''><img src='${pageContext.request.contextPath}/assets/images/delete.jpg'></a></td>    			
+		      			<td ><a id="btn_delete" href=""><img src='${pageContext.request.contextPath}/assets/images/delete.jpg'></a></td>    			
 		      		</tr>
 		      		</c:forEach>
-		      		</tbody>	      		
+		      		</tbody>	
 					</table>
+					</form>
 	      		<h4 class="n-c">새로운 카테고리 추가</h4>
 	      		<form id="admin-cat-add" method="post" action="${pageContext.request.contextPath }/blog/api/insert">
 				<input id="no" type="hidden" name="no" value="${blogVo.userNo }"/>

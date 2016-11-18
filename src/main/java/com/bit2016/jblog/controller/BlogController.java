@@ -61,11 +61,11 @@ public class BlogController {
 	
 	@RequestMapping("/{userId}/admin/category")
 	public String adminCategory(@AuthUser UserVo authUser, @PathVariable("userId") String userId, Model model) {
-		System.out.println("컨트롤러 카테고리");
+		//System.out.println("컨트롤러 카테고리");
 		BlogVo vo = blogService.getInfo(userId);
-		System.out.println("authUserNo: " +authUser.getUserNo());
+		//System.out.println("authUserNo: " +authUser.getUserNo());
 		List<CategoryVo> list = categoryService.categoryList(authUser.getUserNo());
-		System.out.println(list);
+		//System.out.println(list);
 		model.addAttribute("list", list);
 		model.addAttribute("userId", userId);
 		model.addAttribute("blogVo",vo);
@@ -76,9 +76,11 @@ public class BlogController {
 	public String adminWriteform(@AuthUser UserVo authUser, @PathVariable("userId") String userId,
 			@ModelAttribute PostVo postVo, Model model) {
 		System.out.println(userId);
+		BlogVo vo = blogService.getInfo(userId);
 		List<CategoryVo> list = categoryService.categoryList(authUser.getUserNo());
 		model.addAttribute("userId", userId);
 		model.addAttribute("list", list);
+		model.addAttribute("blogVo",vo);
 		return "blog/blog-admin-write";
 	}
 	
@@ -87,7 +89,8 @@ public class BlogController {
 			@ModelAttribute PostVo postVo, Model model) {
 		System.out.println(postVo);
 		postService.write(postVo);
-		return "blog/blog-main";
+
+		return "redirect:/" + authUser.getId();
 		//return "redirect:/"+authUser.getId()+"/"+postVo.getPostNo();
 	}
 	

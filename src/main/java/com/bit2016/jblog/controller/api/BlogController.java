@@ -42,7 +42,7 @@ public class BlogController {
 		
 		boolean result = categoryService.createCategory(vo);
 		
-		System.out.println("controller:" + vo);
+		//System.out.println("controller:" + vo);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("result", "success");
@@ -51,7 +51,16 @@ public class BlogController {
 		return map;
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping("/delete")
+	public Map<String, Object> delete(@ModelAttribute CategoryVo vo ){
+		categoryService.delete(vo);
+		System.out.println("deleteController:" + vo );
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", "success");
+		map.put("data", vo);
+		return map;
+	}
 //	@ResponseBody
 //	@RequestMapping("/")
 //	public Map<String, Object> checkId(@RequestParam(value="id", required=true, defaultValue="") String id) {

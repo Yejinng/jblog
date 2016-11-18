@@ -31,6 +31,7 @@ a:hover 		{ color:#dc143c; text-decoration:none; font-weight:bold; }
 .login-form input, .login-form label			{ display:block }
 .login-form label								{ text-align:left; color:#555; margin-bottom:2px; font-weight:bold; }
 .login-form input[type='text']					{ margin-bottom:10px; width:230px; padding:5px }
+.login-form input[type='password']				{ margin-bottom:10px; width:230px; padding:5px }
 
 .join-form										{ text-align:left; width:250px; padding:10px; border:1px solid #bbb; }
 .join-form label, .join-form fieldset legend	{ color:#555; margin-bottom:2px; font-weight:bold; }
@@ -47,7 +48,7 @@ a:hover 		{ color:#dc143c; text-decoration:none; font-weight:bold; }
 
 
 div#container				{ width:920px; margin:0 auto }
-div#header					{ height:120px; background: #5394CC;  }
+div#header					{ height:120px; background: #688991;  }
 div#content					{ float:left; width:720px; min-height:220px }
 div#content.full-screen		{ float:none; width:920px;}
 div#navigation				{ float:right; width:200px }
@@ -58,21 +59,21 @@ div#footer					{ clear:both; width:100% }
 div#header h1		{ text-align:center; line-height:100px; margin:0; color:#fff }
 div#header ul		{ height:20px } 
 div#header li		{ float:right; margin-right:10px; }
-div#header li a 	{ color:#fff; font-weight:bold; text-decoration:none; }
+div#header li a 	{ color:#e8eeef; font-weight:bold; text-decoration:none; }
 
-#header h1 a:hover	 { color:#79B30B; text-decoration:none  }
-#header h1 a:link	 { color:#79B30B; text-decoration:none  }
-#header h1 a:visited { color:#79B30B; text-decoration:none  }
-#header h1 a:active  { color:#79B30B; text-decoration:none  }
+#header h1 a:hover	 { color:#e8eeef; text-decoration:none  }
+#header h1 a:link	 { color:#e8eeef; text-decoration:none  }
+#header h1 a:visited { color:#e8eeef; text-decoration:none  }
+#header h1 a:active  { color:#e8eeef; text-decoration:none  }
 
 div#container		{ text-align:left }
 
 
 /* content */
-div#content	.blog-content	{ padding:10px }
+div#content	.blog-content	{ padding:10px}
 .blog-content h4			{ font-size:1.3em; color:#9D96D0 }
 .blog-content p				{ margin-top:10px; line-height:150% }
-div#content .blog-list		{ margin:20px 0 10px 10px }
+div#content .blog-list		{ margin:20px 0 10px 10px}
 .blog-list 					{ width:100% }
 .blog-list li				{ height:20px; clear:both; }
 .blog-list li a				{ display:block; float:left }
@@ -120,7 +121,7 @@ div#extra .blog-logo		{ margin:0 0 0 10px }
 div#extra .blog-logo img	{ width:150px }
 
 /* footer */
-div#footer		{ background:#F0F0F0; color:#666 }
+div#footer		{ background:#688991; color:#cdd6d8 }
 div#footer p	{ text-align:center; margin:0; padding:8px 10px }
 
 
